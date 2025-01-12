@@ -8,7 +8,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.client.default import DefaultBotProperties
 
-from handlers import note_action
+from handlers import commands, note_action
 
 
 async def main():
@@ -18,7 +18,7 @@ async def main():
     bot = Bot(token=bot_token, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher()
 
-    dp.include_router(note_action.router)
+    dp.include_routers(commands.main_router)
     # dp.include_router(***additional router***)
 
     # skip all incoming messages
